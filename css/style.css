@@ -8,6 +8,9 @@ html{
     scroll-behavior: smooth;
 }
 
+body.active{
+    overflow: hidden;
+}
 
 :root{
     --roboto: roboto;
@@ -121,11 +124,15 @@ header{
     height: 850px;
     background:  var(--gradient) , url(../img/headerBg.png) no-repeat;
     clip-path: polygon(0 0, 100% 0, 100% 78%, 0 97%);
-    background-size: 100%;
+    background-size: cover;
 }
 
 nav{
     padding: 1.5rem 0;
+}
+
+.none{
+    display: none;
 }
 
 .logo a img{
@@ -228,9 +235,8 @@ nav{
 #story{
     width: 100%;
     height: 1000px;
-    background: var(--gradient), url(../img/watchBg.png);
+    background: var(--gradient), url(../img/watchBg.png) no-repeat center/cover;
     clip-path: polygon(100% 0, 100% 70%, 0 100%, 0 28%);
-    background-size: 100%;
     background-position-y: bottom;
     position: relative;
 
@@ -285,6 +291,7 @@ nav{
     content: "";
     width: 400px;
     height: 100px;
+    display: none;
     background: #000;
     bottom: 0;
     z-index: 99999999999;
@@ -296,6 +303,7 @@ nav{
 .video video.active ~ span{
     pointer-events: all;
     opacity: 1;
+    display: block;
 }
 
 .center{
@@ -428,24 +436,26 @@ nav{
     padding: 3rem;
 }
 
-.menu_links ul li a{
+.menu_links ul li{
     font-size: 1.1rem;
     font-weight: 400;
     text-transform: capitalize;
     color: rgb(24, 24, 24);
     font-family: var(--roboto);
     padding: 1rem 0;
+    cursor: pointer;
 }
 
-.link.active {
+.menu_links ul li.active {
     color: var(--green);
     transition: var(--transition);
     position: relative;
 }
 
-.link.active::before{
+.menu_links ul li.active::before{
     content: "";
     position: absolute;
+    transition: var(--transition);
     left: 0;
     bottom: 0;
     width: 50%;
@@ -456,7 +466,8 @@ nav{
 .card-container{
     display: flex;
     width: 1200px;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    align-items: center;
     margin: 5rem 0;
 }
 
@@ -505,6 +516,7 @@ nav{
     height: 4px;
     border-radius: 5px;
     opacity: .3;
+    cursor: pointer;
 }
 
 .line.active{
@@ -587,4 +599,231 @@ form button img{
 
 .img-box img{
     width: 20px;
+}
+
+@media (max-width: 1329px){
+    .card{
+        width: 18rem;
+    }
+    .container{
+        width: 90%;
+    }
+    .card .img img{
+        width: 35px;
+        margin-top: 10px;
+        margin-right: 10px;
+    }
+
+}
+@media (max-width: 1265px) {
+
+    .title{
+        font-size: 1rem;
+    }
+
+    .text{
+        font-size: 1rem;
+    }
+
+    .container{
+        width: 93%;
+    }
+
+    .card-container{
+        width: 991px;
+        overflow: hidden;
+        margin: 2rem auto;
+    }
+
+    .card-container .card{
+        width: 19rem;
+    }
+
+    #portfolio{
+        height: 100rem;
+    }
+
+    .img_container{
+        align-items: center;
+
+    }
+
+    .img-bg.width:nth-child(2){
+        margin-top: -3rem;
+    }
+
+    .img-bg{
+        width: 250px;
+    }
+
+    .img-bg img{
+        width: 600px;
+        transform: translateX(-300px);
+    }
+
+    .img-bg.width img{
+        width: 400px;
+        height: 300px;
+    }
+}
+
+@media only screen and (max-width: 1030px){
+    .card-container{
+        width: 800px;
+    }
+    .container{
+        width: 97%;
+    }
+    .card-container .card{
+        width: 15rem;
+    }
+}
+
+@media only screen and (max-width: 991px){
+    .none{
+        display: block;
+        cursor: pointer;
+    }
+
+    .none img{
+        width: 30px;   
+        
+    }
+    .menu_link{
+        position: absolute;
+        top: -100%;
+        left: -100%;
+        background: linear-gradient(#7a3adb,#6048fe);
+        height: 600px;
+        width: 100%;
+        z-index: 999999;
+        flex-direction: column;
+        justify-content: space-evenly;
+        padding: 3rem;
+        align-items: center;
+        transition: var(--transition);
+    }
+
+    .menu_link.active{
+        left: 0%;
+        top: 0%;
+    }
+
+    #services.row{
+        flex-direction: column;
+    }
+    .progress-container{
+        flex-direction: column;
+    }
+    .skills-progress{
+        margin-bottom: 3rem;
+    }
+    .menu_links .row{
+        flex-direction: column;
+    }
+
+    .menu_links ul li{
+        padding-top: 2rem;
+        cursor: pointer;
+    }
+
+    .menu_links{
+        height: 7rem;
+        overflow: hidden;
+        transition: var(--transition);
+    }
+
+    .portfolio-menu{
+        filter: invert(1);
+        cursor: pointer;
+    }
+
+    .menu_links.active{
+        height: 29rem;
+    }
+    #portfolio{
+        height: 240rem;
+        overflow: hidden;
+        padding-top: 40rem;
+    }
+
+    .img_container.row{
+        flex-direction: column;
+    }
+
+    .img-bg{
+        width: 300px;
+    }
+
+    .img-bg:nth-child(5){
+        margin-top: 1rem;
+    }
+
+    .img-bg:nth-child(5) img{
+        width: 600px;
+        height: 400px;
+    }
+    .img-bg.width:nth-child(2){
+        margin-top: 1rem;
+    }
+    .card-container{
+        flex-direction: column;
+        width: 100%;
+    }
+    .card-container .card{
+        width: 25rem;
+    }
+    footer .container .row{
+        flex-direction: column;
+    }
+    footer .container .ai-c{
+        align-items: start;
+    }  
+    .footer-item{
+        margin: auto;
+    }  
+    .col-6{
+        width: 100%;
+    }
+
+
+    #services .col-6:nth-child(1) {
+        width: 100%;
+    }
+    .menu_links .ai-c{
+        align-items: start;
+    }
+    
+}
+
+@media only screen and (max-width: 425px) {
+    .logo a.row{
+        flex-direction: column;
+    }
+    .video video.active{
+        width: 250px;
+        height: 250px;
+    }
+    .video video.active ~ span{
+        width: 250px;
+        height: 60px;
+    }
+    .card-container .card{
+        width: 270px;
+    }
+
+}
+
+@media only screen and (max-width: 320px){
+    .card{
+        width: 260px;
+    }
+    .btn{
+        padding: 0.7rem 0.8rem;
+        font-size: .8rem;
+    }
+    .title{
+        font-size: .7rem;
+        line-height: 30px;
+    }
 }

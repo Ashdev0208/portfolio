@@ -7,6 +7,8 @@ window.addEventListener('DOMContentLoaded' , () => {
     twoMenu = document.querySelector('.menu_links'),
     twoLinks = document.querySelectorAll('.menu_links ul li'),
     line = document.querySelectorAll('.line'),
+    slidePerant = document.querySelectorAll('.card-container'),
+    controls = document.querySelector('.controls'),
     twoMenuOpen = document.querySelector('.portfolio-menu'),
     menu = cross.parentElement,
     body = document.body;
@@ -36,11 +38,9 @@ window.addEventListener('DOMContentLoaded' , () => {
         item.onclick = () => {
             twoMenu.classList.remove('active')
             if(item.target && item.target.classList.contains('.link')){
-                
-            item.classList.remove('active')
+                item.classList.remove('active')
             }
         }
-        console.log(item);
     })
     twoMenuOpen.onclick = () => {
         twoMenu.classList.toggle('active')
@@ -49,10 +49,14 @@ window.addEventListener('DOMContentLoaded' , () => {
         twoLinks.forEach(item => {
             item.classList.remove('active')
         })
+        line.forEach(item => {
+            item.classList.remove('active')
+        })
     }
 
     function showTabContent(i = 0) {
         twoLinks[i].classList.add('active')
+        line[i].classList.add('active')
     }
 
     hideTabContent()
@@ -69,14 +73,29 @@ window.addEventListener('DOMContentLoaded' , () => {
             })
         }
     })
-    line.addEventListener('click' , (event) => {
+    controls.addEventListener('click' , (event) => {
         if (event.target && event.target.classList.contains('line')) {
             line.forEach((item, i) => {
                 if (event.target == item) {
                     hideTabContent()
                     showTabContent(i)
-                }
-            })
-        }
-    })
+                };
+            });
+        };
+    });
+    line[0].onclick = () => {
+        slidePerant[0].classList.add('active')
+        slidePerant[1].classList.remove('active')
+        slidePerant[2].classList.remove('active')
+    }
+    line[1].onclick = () => {
+        slidePerant[0].classList.remove('active')
+        slidePerant[1].classList.add('active')
+        slidePerant[2].classList.remove('active')
+    }
+    line[2].onclick = () => {        
+        slidePerant[0].classList.remove('active')
+        slidePerant[1].classList.remove('active')
+        slidePerant[2].classList.add('active')
+    }
  });

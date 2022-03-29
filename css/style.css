@@ -463,13 +463,31 @@ nav{
     background: var(--green);
 }
 
+#reviews{
+    height: 600px;
+    position: relative;
+}
+
+.slide{
+    width: 1200px;
+    margin: 0 auto;
+}
+
 .card-container{
     display: flex;
-    width: 1200px;
     justify-content: space-evenly;
     align-items: center;
     margin: 5rem 0;
+    width: 1200px;
+    position: absolute;
+    opacity: 0;
+    transition: var(--transition);
 }
+
+.card-container.active{
+    opacity: 1;
+}
+
 
 .card-container .card{
     flex-direction: column;
@@ -508,6 +526,10 @@ nav{
     width: 200px;
     height: 20px;
     margin: 0 auto;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translate(-50%,20px);
 }
 
 .line{
@@ -516,6 +538,7 @@ nav{
     height: 4px;
     border-radius: 5px;
     opacity: .3;
+    transition: var(--transition);
     cursor: pointer;
 }
 
@@ -669,7 +692,7 @@ form button img{
 
 @media only screen and (max-width: 1030px){
     .card-container{
-        width: 800px;
+        width: 991px;
     }
     .container{
         width: 97%;
@@ -740,6 +763,9 @@ form button img{
 
     .menu_links.active{
         height: 29rem;
+    }
+    #reviews{
+        height: 1100px; 
     }
     #portfolio{
         height: 240rem;

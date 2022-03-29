@@ -11,11 +11,20 @@ window.addEventListener('DOMContentLoaded' , () => {
     controls = document.querySelector('.controls'),
     twoMenuOpen = document.querySelector('.portfolio-menu'),
     menu = cross.parentElement,
-    body = document.body;
+    body = document.body,
+    load = document.querySelector('.load');
     playerBtn.onclick = () => {
         video.classList.toggle('active');
         video.play();
     }
+
+    window.addEventListener('load' , () => {
+        load.classList.add('active');
+        setTimeout(() => {
+            load.style.display = 'none';
+        }, 500);
+
+    });
 
     video.onclick = () => {
         video.classList.remove('active');
